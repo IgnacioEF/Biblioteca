@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <table class="table table-bordered table-responsive-md">
+    <thead>
+    <tr>
+      <th>
+        <a th:href="@{'/page/' + ${currentPage}
+                            + '?sortField=nombre&sortDir='
+                            + ${reverseSortDir}}">Nombre</a>
+      </th>
+      <th>
+        <a th:href="@{'/page/' + ${currentPage}
+                            + '?sortField=nacionalidad&sortDir='
+                            + ${reverseSortDir}}">Nacionalidad</a>
+      </th>
+      <th>
+        <a th:href="@{'/page/' + ${currentPage}
+                            + '?sortField=fechaNacimiento&sortDir='
+                            + ${reverseSortDir}}">Fecha de nacimiento</a>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr th:each="autor: ${listAutor}">
+      <td th:text="${autor.nombre}"></td>
+      <td th:text="${libro.nacionalidad}"></td>
+      <td th:text="${libro.fechaNacimiento}"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
