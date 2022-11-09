@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET,RequestMethod.DELETE,RequestMethod.PUT}, value = "/libros")
 
 public class LibroController {
     @Autowired

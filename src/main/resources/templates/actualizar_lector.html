@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar lector</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h3>Gestión de lectores</h3>
+  <hr>
+  <h2>Actualización de un lector</h2>
+
+  <form action="#" th:action="@{/lectores/save}" th:object="${lector}" method="POST">
+    <input type="text" th:field="*{id}" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{nombre}" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{direccion}" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{telefono}" class="form-control mb-4 col-4">
+    <p>prestamos</p>
+    <p>multa</p>
+    <button type="submit" class="btn btn-info col-2">Guardar Lector</button>
+  </form>
+
+  <hr>
+  <a th:href="@{/lectores}">Volver al listado de lectores</a>
+</div>
+</body>
+</html>
+
+
+
+  <hr>
+  <a th:href="@{/}">Volver al listado de libros</a>
+</div>
+</body>
+</html>
