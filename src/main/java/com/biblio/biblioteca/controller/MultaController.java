@@ -42,7 +42,6 @@ public class MultaController {
                 "decs" : "asc");
         model.addAttribute("listMulta", listMulta);
 
-
         return "multas";
     }
 
