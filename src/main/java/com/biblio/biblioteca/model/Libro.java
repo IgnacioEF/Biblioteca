@@ -82,8 +82,8 @@ public class Libro {
         return this.autor.getNombre();
     }
 
-    public void setAutor(String nombre) {
-        this.autor.setNombre(nombre);
+    public void setAutor(Long id) {
+        this.autor.setId(id);
     }
 
     public Libro(Long isbn, String titulo, TipoLibro tipo, String editorial, int anyo) {

@@ -21,7 +21,7 @@ public class MultaController {
     @GetMapping("/multas")
     public String viewHomePage(Model model){
 
-        return findPaginated(1, "nombre", "asc", model);
+        return findPaginated(1, "id", "asc", model);
     }
 
     @GetMapping("/multas/page/{pageNo}")

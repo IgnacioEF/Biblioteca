@@ -41,12 +41,12 @@ public class AutorController {
 
         return "autores";
     }
-/*
-    @PostMapping("/autores/save")
+
+    /*@PostMapping("/autores/save")
     public String saveAutor(@ModelAttribute("nombre") Autor a){
         this.autorService.saveAutor(a);
         return "redirect:/";
-    }
+    }*/
 
     @GetMapping("/autores/delete/{id}")
     public String deleteAutor(@PathVariable(value="id") long id, Model model){
@@ -54,7 +54,7 @@ public class AutorController {
         return "redirect:/";
     }
 
-    @GetMapping("/autores/update/{id}")
+    /*@GetMapping("/autores/update/{id}")
     public String showFormUpdate(@PathVariable(value="id") long id, Model model){
         Autor autor = autorService.getAutorById(id);
         model.addAttribute("autor", autor);
