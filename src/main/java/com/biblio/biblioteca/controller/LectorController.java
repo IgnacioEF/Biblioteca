@@ -45,7 +45,7 @@ public class LectorController {
     }
 
     @PostMapping("/lectores/save")
-    public String saveLector(@ModelAttribute("titulo") Lector l){
+    public String saveLector(@ModelAttribute("id") Lector l){
         this.lectorService.saveLector(l);
         return "redirect:/";
     }

@@ -18,10 +18,36 @@
            class="form-control mb-4 col-4">
     <input type="text" placeholder="Escriba el año de publicacion" th:field="*{anyo}"
            class="form-control mb-4 col-4">
-    <input type="text" placeholder="Escriba el tipo" th:field="*{tipo}"
+
+    <input type="text" placeholder="Escriba el TIPO" th:field="*{tipo}"
            class="form-control mb-4 col-4">
 
+    <!--<select name="desplegableTipo">
+      <option th:field="*{tipo}" th:value="${NOVELA}"> Novela </option>
+      <option th:field="*{tipo}" th:value="${TEATRO}"> Teatro </option>
+      <option th:field="*{tipo}" th:value="${POESIA}"> Poesia </option>
+      <option th:field="*{tipo}" th:value="${ENSAYO}"> Ensayo </option>
+    </select>-->
+
+    <hr>
+
+    <select name="desplegableAutor">
+      <option th:each="autor: ${listAutor}" th:value="${autor.id}" th:text="${autor.nombre}" th:selected="true">
+      </option>
+    </select>
+
+    <hr>
+
     <button type="submit" class="btn btn-info col-2">Guardar Libro</button>
+
+    <!--DESPLEGABLE QUE SE SUPONE QUE AL PULSARLO MUESTRA LA INFO DEL USUARIO, EN VEZ DE ESO HACE UN SUBMIT IGUAL QUE EL OTRO BOTON
+    <button data-toggle="collapse" data-target="#desplegable">Ver usuario</button>
+
+    <div id="desplegable" class="collapse" th:text="${libro.titulo}">juajuajua
+      <div th:text="${libro.autor}"></div>
+      <div th:text="${libro.tipo}"></div>
+    </div>-->
+
   </form>
 
   <hr>

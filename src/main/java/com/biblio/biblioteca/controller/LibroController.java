@@ -1,7 +1,8 @@
 package com.biblio.biblioteca.controller;
 
+import com.biblio.biblioteca.model.Autor;
 import com.biblio.biblioteca.model.Libro;
-import com.biblio.biblioteca.repository.LibroRepository;
+import com.biblio.biblioteca.service.AutorService;
 import com.biblio.biblioteca.service.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,14 +17,16 @@ import java.util.List;
 public class LibroController {
     @Autowired
     private LibroService libroService;
+    @Autowired
+    private AutorService autorService;
 
-    @GetMapping("/libros")
+    @GetMapping()
     public String viewHomePage(Model model){
 
         return findPaginated(1, "titulo", "asc", model);
     }
 
-    @GetMapping("/librospage/{pageNo}")
+    @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value="pageNo") int pageNo,
                                 @RequestParam("sortField") String sortField,
                                 @RequestParam("sortDir") String sortDir,
@@ -45,8 +48,8 @@ public class LibroController {
         return "libros";
     }
 
-    @PostMapping("/libros/save")
-    public String saveLibro(@ModelAttribute("titulo") Libro l){
+    @PostMapping("/save")
+    public String saveLibro(@ModelAttribute("isbn") Libro l){
         this.libroService.saveLibro(l);
         return "redirect:/";
     }
@@ -57,17 +60,20 @@ public class LibroController {
         return "redirect:/";
     }
 
-    @GetMapping("/libros/update/{isbn}")
+    @GetMapping("/update/{isbn}")
     public String showFormUpdate(@PathVariable(value="isbn") long id, Model model){
         Libro libro = libroService.getLibroById(id);
         model.addAttribute("libro", libro);
         return "actualizar_libro";
     }
 
-    @GetMapping("/libros/add")
+    @GetMapping("/add")
     public String showNewForm(Model model) {
         Libro l = new Libro();
+        List<Autor> listAutor=  autorService.getAllAutor();
         model.addAttribute("libro", l);
+        model.addAttribute("listAutor", listAutor);
+
         return "nuevo_libro";
     }
 }

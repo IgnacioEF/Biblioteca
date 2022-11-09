@@ -30,7 +30,7 @@ public class Libro {
     private int anyo;
 
     @JoinColumn
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
     private Autor autor;
 
     @OneToMany(mappedBy="libro", targetEntity=Copia.class, cascade=CascadeType.ALL)
@@ -78,15 +78,24 @@ public class Libro {
         this.anyo = anyo;
     }
 
+    public String getAutor(){
+        return this.autor.getNombre();
+    }
+
+    public void setAutor(String nombre) {
+        this.autor.setNombre(nombre);
+    }
+
     public Libro(Long isbn, String titulo, TipoLibro tipo, String editorial, int anyo) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.tipo = tipo;
         this.editorial = editorial;
         this.anyo = anyo;
+        this.autor = new Autor();
     }
 
     public Libro(){
-
+        this.autor = new Autor();
     }
 }
