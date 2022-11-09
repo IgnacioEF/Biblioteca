@@ -27,7 +27,7 @@ public class Autor {
     @Column
     private Date fechaNacimiento;
 
-    @OneToMany(mappedBy="autor", targetEntity=Libro.class, cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="autor", targetEntity=Libro.class, cascade=CascadeType.MERGE ,fetch= FetchType.EAGER)
     @Column
     private Set<Libro> librosPublicados = new HashSet<>();
 

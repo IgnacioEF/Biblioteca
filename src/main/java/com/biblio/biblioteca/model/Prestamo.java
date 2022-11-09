@@ -24,7 +24,7 @@ public class Prestamo {
     LocalDate fin;
 
     @JoinColumn
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Lector lector;
 
     @JoinColumn
@@ -63,5 +63,21 @@ public class Prestamo {
 
     public Prestamo(){
 
+    }
+
+    public String getLector() {
+        return lector.getNombre();
+    }
+
+    public void setLector(Long id) {
+        this.lector.setId(id);
+    }
+
+    public String getCopia() {
+        return copia.getLibro().getTitulo();
+    }
+
+    public void setCopia(Long id) {
+        this.copia.setId(id);
     }
 }

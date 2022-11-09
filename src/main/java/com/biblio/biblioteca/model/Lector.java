@@ -26,7 +26,7 @@ public class Lector{
     String telefono;
 
     @Column
-    @OneToMany(mappedBy="lector", targetEntity=Prestamo.class)
+    @OneToMany(mappedBy="lector", targetEntity=Prestamo.class, cascade=CascadeType.MERGE ,fetch= FetchType.EAGER)
     private Set<Prestamo> prestamo = new HashSet<>();
 
     @JoinColumn

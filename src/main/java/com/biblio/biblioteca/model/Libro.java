@@ -30,10 +30,10 @@ public class Libro {
     private int anyo;
 
     @JoinColumn
-    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+    @ManyToOne(fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Autor autor;
 
-    @OneToMany(mappedBy="libro", targetEntity=Copia.class, cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="libro", targetEntity=Copia.class, cascade=CascadeType.MERGE ,fetch= FetchType.EAGER)
     @Column
     private Set<Copia> copia = new HashSet<>();
 

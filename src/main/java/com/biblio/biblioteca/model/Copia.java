@@ -18,7 +18,7 @@ public class Copia {
     private EstadoCopia estado;
 
     @JoinColumn
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Libro libro;
 
     @JoinColumn
