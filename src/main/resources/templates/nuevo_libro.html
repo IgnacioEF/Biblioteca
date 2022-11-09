@@ -31,7 +31,7 @@
 
     <hr>
 
-    <select name="desplegableAutor">
+    <select>
       <option th:each="autor: ${listAutor}" th:value="${autor.id}" th:text="${autor.nombre}" th:selected="true">
       </option>
     </select>
