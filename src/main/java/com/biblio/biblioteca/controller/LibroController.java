@@ -42,9 +42,8 @@ public class LibroController {
         model.addAttribute("sortField", sortField);
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ?
-                "decs" : "asc");
+                "desc" : "asc");
         model.addAttribute("listLibro", listLibro);
-
 
         return "libros";
     }
@@ -55,8 +54,8 @@ public class LibroController {
         return "redirect:/";
     }
 
-    @GetMapping("/libros/delete/{isbn}")
-    public String deleteLibro(@PathVariable(value="ibsn") long id, Model model){
+    @GetMapping("/delete/{isbn}")
+    public String deleteLibro(@PathVariable(value="isbn") long id, Model model){
         this.libroService.deleteLibroById(id);
         return "redirect:/";
     }

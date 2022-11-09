@@ -1,7 +1,6 @@
 package com.biblio.biblioteca.controller;
 
 import com.biblio.biblioteca.model.Lector;
-import com.biblio.biblioteca.model.Libro;
 import com.biblio.biblioteca.service.LectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,26 +46,26 @@ public class LectorController {
     @PostMapping("/lectores/save")
     public String saveLector(@ModelAttribute("id") Lector l){
         this.lectorService.saveLector(l);
-        return "redirect:/";
+        return "redirect:/lectores";
     }
 
     @GetMapping("/lectores/delete/{id}")
     public String deleteLector(@PathVariable(value="id") long id, Model model){
         this.lectorService.deleteLectorById(id);
-        return "redirect:/";
+        return "redirect:/lectores";
     }
 
     @GetMapping("/lectores/update/{id}")
     public String showFormUpdate(@PathVariable(value="id") long id, Model model){
         Lector lector = lectorService.getLectorById(id);
         model.addAttribute("lector", lector);
-        return "redirect:/"; // corregir path de retorno
+        return "actualizar_lector";
     }
 
     @GetMapping("/lectores/add")
     public String showNewForm(Model model) {
-        Libro l = new Libro();
-        model.addAttribute("libro", l);
-        return "redirect:/"; // corregir path de retorno
+        Lector l = new Lector();
+        model.addAttribute("lector", l);
+        return "nuevo_lector";
     }
 }

@@ -36,7 +36,7 @@ public class AutorController {
         model.addAttribute("sortField", sortField);
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ?
-                "decs" : "asc");
+                "desc" : "asc");
         model.addAttribute("listAutor", listAutor);
 
         return "autores";

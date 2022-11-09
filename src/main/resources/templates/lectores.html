@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Libros</title>
+    <title>Lectores</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 <h3>Lista de Lectores</h3>
-<a class="btn btn-primary btn-sm mb-3" th:href="@{/add}">Agregar un lector</a>
+<a class="btn btn-primary btn-sm mb-3" th:href="@{/lectores/add}">Agregar un lector</a>
 <div class="container">
     <table class="table table-bordered table-responsive-md">
         <thead>
@@ -32,35 +32,36 @@
                             + '?sortField=isbn&sortDir='
                             + ${reverseSortDir}}">Teléfono</a>
             </th>
-            <!-- <th>
+            <th>
                 <a th:href="@{'/page/' + ${currentPage}
                             + '?sortField=editorial&sortDir='
-                            + ${reverseSortDir}}">Prestamo</a>
-            </th> -->
-            <!-- <th>
+                            + ${reverseSortDir}}">Préstamos</a>
+            </th>
+            <th>
                 <a th:href="@{'/page/' + ${currentPage}
                             + '?sortField=tipo&sortDir='
                             + ${reverseSortDir}}">Multa</a>
-            </th> -->
+            </th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="libro: ${listLector}">
+        <tr th:each="lector: ${listLector}">
             <td th:text="${lector.id}"></td>
             <td th:text="${lector.nombre}"></td>
-            <td th:text="${lector.dirección}"></td>
+            <td th:text="${lector.direccion}"></td>
             <td th:text="${lector.telefono}"></td>
-            <!-- TERMINAR PRESTAMOS Y MULTAS
-            <td th:text="${lector.editorial}"></td>
-            <td th:text="${lector.tipo}"></td>
-            <td> -->
+            <!-- TERMINAR PRESTAMOS Y MULTAS -->
+            <td th:text="empty"></td>
+            <td th:text="empty"></td>
+            <td>
                 <a class="btn btn-primary" th:href="@{/lectores/update/{id}(id=${lector.id})}">Actualizar</a>
                 <a class="btn btn-danger" th:href="@{/lectores/delete/{id}(id=${lector.id})}">Eliminar</a>
             </td>
         </tr>
         </tbody>
     </table>
+    <p th:if="${listLector.size() == 0}">No existen lectores</p>
 
     <div th:if="${totalPages > 1}">
         <div class="row col-sm-10">
