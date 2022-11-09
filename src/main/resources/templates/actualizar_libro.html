@@ -11,6 +11,7 @@
   <hr>
   <h2>Actualización de un libro</h2>
 
+  <!--Actualizar el autor por checkbox, sino el usuario puede inventarse autores -->
   <form action="#" th:action="@{/libros/save}" th:object="${libro}" method="POST">
     <input type="hidden" th:field="*{isbn}">
     <input type="text" th:field="*{titulo}" class="form-control mb-4 col-4">
