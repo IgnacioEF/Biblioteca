@@ -6,24 +6,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-<a class="btn btn-primary btn-sm mb-3" th:href="@{/multas/add}">Agregar un Libro</a>
+<a class="btn btn-primary btn-sm mb-3" th:href="@{/multas/add}">Agregar un Multa</a>
 <div class="container">
   <table class="table table-bordered table-responsive-md">
     <thead>
     <tr>
       <th>
         <a th:href="@{'/multas/page/' + ${currentPage}
-                            + '?sortField=titulo&sortDir='
+                            + '?sortField=id&sortDir='
+                            + ${reverseSortDir}}">Multa ID</a>
+      </th>
+      <th>
+        <a th:href="@{'/multas/page/' + ${currentPage}
+                            + '?sortField=f_fin&sortDir='
                             + ${reverseSortDir}}">Fecha final multa</a>
       </th>
       <th>
         <a th:href="@{'/multas/page/' + ${currentPage}
-                            + '?sortField=autor&sortDir='
+                            + '?sortField=f_inicio&sortDir='
                             + ${reverseSortDir}}">Fecha inicio multa</a>
       </th>
       <th>
         <a th:href="@{'/multas/page/' + ${currentPage}
-                            + '?sortField=anyo&sortDir='
+                            + '?sortField=lector_id&sortDir='
                             + ${reverseSortDir}}">Lector ID</a>
       </th>
 
@@ -33,9 +38,10 @@
     </thead>
     <tbody>
     <tr th:each="multa: ${listMulta}">
-      <td th:text="${multa.f_fin}"></td>
-      <td th:text="${multa.f_inicio}"></td>
-      <td th:text="${multa.lector_id}"></td>
+      <td th:text="${multa.id}"></td>
+      <td th:text="${multa.fFin}"></td>
+      <td th:text="${multa.fInicio}"></td>
+      <td th:text="${multa.lector}"></td>
 
 
       <td>

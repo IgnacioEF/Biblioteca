@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,17 +19,17 @@ public class Prestamo {
     Long id;
 
     @Column
-    LocalDate inicio;
+    Date inicio;
 
     @Column
-    LocalDate fin;
+    Date fin;
 
     @JoinColumn
     @ManyToOne(fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Lector lector;
 
     @JoinColumn
-    @OneToOne(mappedBy="prestamo", targetEntity=Copia.class, cascade=CascadeType.ALL)
+    @OneToOne
     private Copia copia;
 
     public Long getId() {
@@ -39,19 +40,19 @@ public class Prestamo {
         this.id = id;
     }
 
-    public LocalDate getInicio() {
+    public Date getInicio() {
         return inicio;
     }
 
-    public void setInicio(LocalDate inicio) {
+    public void setInicio(Date inicio) {
         this.inicio = inicio;
     }
 
-    public LocalDate getFin() {
+    public Date getFin() {
         return fin;
     }
 
-    public void setFin(LocalDate fin) {
+    public void setFin(Date fin) {
         this.fin = fin;
     }
 
@@ -59,10 +60,13 @@ public class Prestamo {
         this.id = id;
         this.inicio = inicio;
         this.fin = fin;
+        this.lector = new Lector();
+        this.copia = new Copia();
     }
 
     public Prestamo(){
-
+        this.lector = new Lector();
+        this.copia = new Copia();
     }
 
     public String getLector() {

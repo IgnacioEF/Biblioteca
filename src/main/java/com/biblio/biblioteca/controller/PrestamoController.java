@@ -1,12 +1,9 @@
 package com.biblio.biblioteca.controller;
 
 
-import com.biblio.biblioteca.model.Autor;
-import com.biblio.biblioteca.model.Libro;
-import com.biblio.biblioteca.model.Prestamo;
-import com.biblio.biblioteca.service.AutorService;
-import com.biblio.biblioteca.service.LibroService;
-import com.biblio.biblioteca.service.PrestamoService;
+import com.biblio.biblioteca.model.*;
+import com.biblio.biblioteca.service.*;
+//import com.biblio.biblioteca.service.CopiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -21,6 +18,12 @@ import java.util.List;
 public class PrestamoController {
     @Autowired
     private PrestamoService prestamoService;
+
+    @Autowired
+    private CopiaService copiaService;
+
+    @Autowired
+    private LectorService lectorService;
 
     @GetMapping()
     public String viewHomePage(Model model) {
@@ -56,22 +59,27 @@ public class PrestamoController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteLibro(@PathVariable(value = "Id") long id, Model model) {
+    public String deletePrestamo(@PathVariable(value = "id") long id, Model model) {
         this.prestamoService.deletePrestamoById(id);
         return "redirect:/";
     }
 
-    @GetMapping("/update/{isbn}")
-    public String showFormUpdate(@PathVariable(value="isbn") long id, Model model){
+    @GetMapping("/update/{id}")
+    public String showFormUpdate(@PathVariable(value="id") long id, Model model){
         Prestamo prestamo = prestamoService.getPrestamoById(id);
-        model.addAttribute("libro", prestamo);
-        return "actualizar_libro";
+        model.addAttribute("prestamo", prestamo);
+        return "actualizar_prestamo";
     }
 
     @GetMapping("/add")
     public String showNewForm(Model model) {
         Prestamo p = new Prestamo();
+        List<Copia> listCopia=  copiaService.getAllCopia();
+        List<Lector> listLector=  lectorService.getAllLector();
         model.addAttribute("prestamo", p);
+        model.addAttribute("listCopia", listCopia);
+        model.addAttribute("listLector", listLector);
         return "nuevo_prestamo";
     }
+
 }

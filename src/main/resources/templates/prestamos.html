@@ -36,18 +36,24 @@
                             + '?sortField=copia&sortDir='
                             + ${reverseSortDir}}">Copia</a>
       </th>
+      <th>
+        <a th:href="@{'/libros/page/' + ${currentPage}
+                            + '?sortField=lector&sortDir='
+                            + ${reverseSortDir}}">Lector</a>
+      </th>
       <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="prestamo: ${listPrestamo}">
-      <td th:text="${prestamo.id}"></td>
-      <td th:text="${prestamo.inicio}"></td>
-      <td th:text="${prestamo.fin}"></td>
-      <td th:text="${prestamo.lector}"></td>
-      <td th:text="${prestamo.copia}"></td>
-      <td>
-        <a class="btn btn-danger" th:href="@{/libros/delete/{id}(id=${prestamo.id})}">Eliminar</a>
+
+      <tr th:each="prestamo: ${listPrestamo}">
+          <td th:text="${prestamo.id}"></td>
+          <td th:text="${prestamo.inicio}"></td>
+          <td th:text="${prestamo.fin}"></td>
+          <td th:text="${prestamo.copia}"></td>
+          <td th:text="${prestamo.lector}"></td>
+          <td>
+        <a class="btn btn-danger" th:href="@{/prestamos/delete/{id}(id=${prestamo.id})}">Devolver</a>
       </td>
     </tr>
     </tbody>

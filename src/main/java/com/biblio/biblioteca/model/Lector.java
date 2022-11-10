@@ -1,11 +1,9 @@
 package com.biblio.biblioteca.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -14,23 +12,26 @@ public class Lector{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @Column
-    String direccion;
+    private String direccion;
 
     @Column
-    String nombre;
+    private String nombre;
 
     @Column
-    String telefono;
+    private String telefono;
+
+    @Transient
+    private Boolean multado;
 
     @Column
     @OneToMany(mappedBy="lector", targetEntity=Prestamo.class, cascade=CascadeType.MERGE ,fetch= FetchType.EAGER)
     private Set<Prestamo> prestamo = new HashSet<>();
 
     @JoinColumn
-    @OneToOne(mappedBy="lector", targetEntity=Multa.class)
+    @OneToOne
     private Multa multa;
 
     public Long getId() {
@@ -73,8 +74,8 @@ public class Lector{
         this.prestamo = prestamo;
     }
 
-    public Multa getMulta() {
-        return multa;
+    public Long getMulta() {
+        return this.multa.getId();
     }
 
     public void setMulta(Multa multa) {
@@ -90,5 +91,17 @@ public class Lector{
         this.direccion = direccion;
         this.nombre = nombre;
         this.telefono = telefono;
+    }
+
+    public void anadirPrestamo(Prestamo p){
+
+    }
+
+    public Boolean getMultado() {
+        return multado;
+    }
+
+    public void setMultado(Boolean multado) {
+        this.multado = multado;
     }
 }

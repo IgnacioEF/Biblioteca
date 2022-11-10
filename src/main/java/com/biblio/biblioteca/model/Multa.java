@@ -21,7 +21,7 @@ public class Multa {
     Date fFin;
 
     @JoinColumn
-    @OneToOne
+    @OneToOne(mappedBy="multa", targetEntity=Lector.class)
     private Lector lector;
 
 
@@ -50,12 +50,22 @@ public class Multa {
     }
 
     public Multa() {
-
     }
 
     public Multa(Long id, Date fInicio, Date fFin) {
         this.id = id;
         this.fInicio = fInicio;
         this.fFin = fFin;
+    }
+
+    public String getLector() {
+        return lector.getNombre();
+    }
+
+    public void setLector(Lector lector) {
+        System.out.println("pasa por aqui");
+        this.lector = lector;
+        this.lector.setMultado(true);
+        this.lector.setMulta(this);
     }
 }

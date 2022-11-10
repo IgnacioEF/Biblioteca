@@ -2,6 +2,7 @@ package com.biblio.biblioteca.controller;
 
 import com.biblio.biblioteca.model.Lector;
 import com.biblio.biblioteca.model.Multa;
+import com.biblio.biblioteca.service.LectorService;
 import com.biblio.biblioteca.service.MultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-
 public class MultaController {
 
 
     @Autowired
     MultaService multaService;
+    @Autowired
+    LectorService lectorService;
     @GetMapping("/multas")
     public String viewHomePage(Model model){
 
@@ -66,8 +68,11 @@ public class MultaController {
 
     @GetMapping("/multas/add")
     public String showNewForm(Model model) {
-        Multa m = new Multa();
-        model.addAttribute("multa", m);
+        Multa multa = new Multa();
+        multa.setLector(new Lector());
+        List<Lector> listLector = lectorService.getAllLector();
+        model.addAttribute("multa", multa);
+        model.addAttribute("listLector", listLector);
         return "nueva_multa";
     }
 

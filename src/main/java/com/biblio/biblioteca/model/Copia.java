@@ -22,7 +22,7 @@ public class Copia {
     private Libro libro;
 
     @JoinColumn
-    @OneToOne
+    @OneToOne(mappedBy="copia", fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Prestamo prestamo;
 
     public long getId() {
@@ -41,12 +41,12 @@ public class Copia {
         this.estado = estado;
     }
 
-    public Libro getLibro() {
-        return libro;
+    public String getLibro() {
+        return libro.getTitulo();
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+    public void setLibro(Long id) {
+        this.libro.setIsbn(id);
     }
 
     public Prestamo getPrestamo() {
@@ -58,13 +58,13 @@ public class Copia {
     }
 
     public Copia(){
-
+        this.libro = new Libro();
     }
 
-    public Copia(long id, EstadoCopia estado, Libro libro, Prestamo prestamo) {
+    public Copia(long id, EstadoCopia estado, Libro libro) {
         this.id = id;
         this.estado = estado;
-        this.libro = libro;
-        this.prestamo = prestamo;
+        this.libro = new Libro();
+        this.prestamo = new Prestamo();
     }
 }
