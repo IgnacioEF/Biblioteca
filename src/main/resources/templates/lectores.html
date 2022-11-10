@@ -52,8 +52,9 @@
             <td th:text="${lector.direccion}"></td>
             <td th:text="${lector.telefono}"></td>
             <!-- TERMINAR PRESTAMOS Y MULTAS -->
-            <td th:text="empty"></td>
-            <td th:text="empty"></td>
+            <td th:text="${lector.prestamo.size()}"></td>
+            <div th:if="${lector.multado == true}" ><td th:text="Sí"></td> </div>
+            <div th:unless="${lector.multado == false}"><td th:text="No"></td></div>
             <td>
                 <a class="btn btn-primary" th:href="@{/lectores/update/{id}(id=${lector.id})}">Actualizar</a>
                 <a class="btn btn-danger" th:href="@{/lectores/delete/{id}(id=${lector.id})}">Eliminar</a>
@@ -88,6 +89,7 @@
             </div>
         </div>
     </div>
+    <a class="btn btn-primary" th:href="@{/}">Volver a home</a>
 </div>
 </body>
 </html>

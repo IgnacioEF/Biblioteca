@@ -2,28 +2,65 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo prestamo</title>
+  <title>Nuevo préstamo</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
-  <h3>Gestión de prestamos</h3>
+  <h3>Gestión de préstamos</h3>
   <hr>
-  <h2>Actualización de un libro</h2>
-
+  <h2>Añadimos prestamo</h2>
 
   <form action="#" th:action="@{/prestamos/save}" th:object="${prestamo}" method="POST">
-    <input type="hidden" th:field="*{id}">
-    <input type="text" th:field="*{fin}" class="form-control mb-4 col-4">
-    <input type="text" th:field="*{inicio}" class="form-control mb-4 col-4">
-    <input th:field="*{lector}" class="form-control mb-4 col-4">
+    <label>Fecha de inicio</label><input type="text" th:field="*{inicio}"
+                                         class="form-control mb-4 col-4">
+    <label>Fecha de fin</label><input type="text" th:field="*{fin}"
+                                      class="form-control mb-4 col-4">
 
 
-    <button type="submit" class="btn btn-info col-2">Guardar Libro</button>
+    <!-- NO FUNCIONA
+    <input type="hidden" th:field="*{lector}" th:object="${lector}" th:value="${lector.id}"
+           class="form-control mb-4 col-4"> -->
+
+    <!--<input type="text" placeholder="Escriba el TIPO" th:field="*{tipo}"
+           class="form-control mb-4 col-4">-->
+    <hr>
+
+      <select th:field="*{copia}" class="form-control form-control-sm col-md-6" id="copia">
+        <option th:each="copia: ${listCopia}"
+                th:value="${copia.id}"
+                th:text="${copia.libro}">
+        </option>
+      </select>
+
+    <hr>
+
+      <select th:field="*{lector}" class="form-control form-control-sm col-md-6" id="lector">
+        <option th:each="lector: ${listLector}"
+                th:value="${lector.id}"
+                th:text="${lector.nombre}">
+
+        </option>
+      </select>
+
+
+    <hr>
+
+    <button type="submit" class="btn btn-info col-2">Guardar Prestamo</button>
+
+    <!--DESPLEGABLE QUE SE SUPONE QUE AL PULSARLO MUESTRA LA INFO DEL USUARIO, EN VEZ DE ESO HACE UN SUBMIT IGUAL QUE EL OTRO BOTON
+    <button data-toggle="collapse" data-target="#desplegable">Ver usuario</button>
+
+    <div id="desplegable" class="collapse" th:text="${libro.titulo}">juajuajua
+      <div th:text="${libro.autor}"></div>
+      <div th:text="${libro.tipo}"></div>
+    </div>-->
+
   </form>
 
   <hr>
-  <a th:href="@{/libros}">Volver al listado de libros</a>
+  <a th:href="@{/prestamos}">Volver al listado de Prestamos</a>
+
 </div>
 </body>
 </html>

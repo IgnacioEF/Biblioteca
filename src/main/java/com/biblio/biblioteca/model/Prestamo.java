@@ -56,7 +56,15 @@ public class Prestamo {
         this.fin = fin;
     }
 
-    public Prestamo(Long id, LocalDate inicio, LocalDate fin) {
+    public String getCopia() {
+        return copia.getLibro();
+    }
+
+    public void setCopia(Copia copia) {
+        this.copia = copia;
+    }
+
+    public Prestamo(Long id, Date inicio, Date fin) {
         this.id = id;
         this.inicio = inicio;
         this.fin = fin;
@@ -77,11 +85,12 @@ public class Prestamo {
         this.lector.setId(id);
     }
 
-    public String getCopia() {
+    // COMENTADO TEMPPORALMENTE
+    /*public String getCopia() {
         return copia.getLibro().getTitulo();
     }
 
     public void setCopia(Long id) {
         this.copia.setId(id);
-    }
+    }*/
 }

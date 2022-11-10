@@ -7,6 +7,7 @@
 </head>
 <body>
 <a class="btn btn-primary btn-sm mb-3" th:href="@{/prestamos/add}">Agregar un Prestamo</a>
+<h3>PRESTAMOS</h3>
 <div class="container">
   <table class="table table-bordered table-responsive-md">
     <thead>
@@ -25,11 +26,6 @@
         <a th:href="@{'/libros/page/' + ${currentPage}
                             + '?sortField=fin&sortDir='
                             + ${reverseSortDir}}">Fecha Finalizacion</a>
-      </th>
-      <th>
-        <a th:href="@{'/libros/page/' + ${currentPage}
-                            + '?sortField=lector&sortDir='
-                            + ${reverseSortDir}}">Lector</a>
       </th>
       <th>
         <a th:href="@{'/libros/page/' + ${currentPage}
@@ -58,6 +54,7 @@
     </tr>
     </tbody>
   </table>
+  <p th:if="${listPrestamo.size() == 0}">No existen prestamos</p>
 
   <div th:if="${totalPages > 1}">
     <div class="row col-sm-10">
