@@ -74,9 +74,9 @@ public class LectorController {
     @GetMapping("/lectores/multar/{id}")
     public String showFormMultar(@PathVariable(value="id") long id, Model model){
         Lector lector = lectorService.getLectorById(id);
-        Multa m = new Multa();
-        model.addAttribute("multado", lector);
-        model.addAttribute("multa", m);
+        Multa multa = new Multa();
+        model.addAttribute("lector", lector);
+        model.addAttribute("multa", multa);
         return "multar";
     }
 }

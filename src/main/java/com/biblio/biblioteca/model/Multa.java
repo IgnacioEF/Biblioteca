@@ -38,6 +38,7 @@ public class Multa {
     }
 
     public void setfInicio(Date fInicio) {
+        System.out.println("fecha de incio que se intenta meter " + fInicio);
         this.fInicio = fInicio;
     }
 
@@ -46,10 +47,13 @@ public class Multa {
     }
 
     public void setfFin(Date fFin) {
+        System.out.println("fecha de final que se intenta meter " + fFin);
         this.fFin = fFin;
     }
 
     public Multa() {
+        this.fInicio = new Date();
+        this.fFin = new Date();
     }
 
     public Multa(Long id, Date fInicio, Date fFin) {

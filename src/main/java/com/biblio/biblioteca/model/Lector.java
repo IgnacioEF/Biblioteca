@@ -2,6 +2,7 @@ package com.biblio.biblioteca.model;
 
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -23,7 +24,6 @@ public class Lector{
     @Column
     private String telefono;
 
-    @Transient
     private Boolean multado;
 
     @Column
@@ -74,8 +74,8 @@ public class Lector{
         this.prestamo = prestamo;
     }
 
-    public Long getMulta() {
-        return this.multa.getId();
+    public Multa getMulta() {
+        return this.multa;
     }
 
     public void setMulta(Multa multa) {
@@ -86,14 +86,13 @@ public class Lector{
 
     }
 
-    public Lector(Long id, String direccion, String nombre, String telefono) {
+    public Lector(Long id, String direccion, String nombre, String telefono, Boolean multado) {
         this.id = id;
         this.direccion = direccion;
         this.nombre = nombre;
         this.telefono = telefono;
-    }
-
-    public void anadirPrestamo(Prestamo p){
+        this.multado=multado;
+        this.multa = new Multa(0L, new Date(), new Date());
 
     }
 

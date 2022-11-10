@@ -12,10 +12,12 @@
   <h2>Actualización de un lector</h2>
 
   <form action="#" th:action="@{/lectores/save}" th:object="${lector}" method="POST">
-    <input type="text" th:field="*{id}" class="form-control mb-4 col-4">
+    <input type="hidden" th:field="*{id}" class="form-control mb-4 col-4">
     <input type="text" th:field="*{nombre}" class="form-control mb-4 col-4">
     <input type="text" th:field="*{direccion}" class="form-control mb-4 col-4">
     <input type="text" th:field="*{telefono}" class="form-control mb-4 col-4">
+    <input type="checkbox"  th:field="*{multado}"
+           class="form-control mb-4 col-4">
     <p>prestamos</p>
     <p>multa</p>
     <button type="submit" class="btn btn-info col-2">Guardar Lector</button>

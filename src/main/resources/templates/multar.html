@@ -2,31 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo lector</title>
+  <title>Multar</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
   <h3>Gestión de lectores</h3>
   <hr>
-  <h2>Añadimos lector</h2>
+  <h2>Multamos lector</h2>
 
-  <form action="#" th:action="@{/lectores/multar/}" th:object="${multa}"  method="POST">
-    <input type="text"  placeholder="Escriba la fecha de inicio" th:field="*{fInicio}"
-           class="form-control mb-4 col-4">
-    <input type="text" placeholder="Escriba la fecha de fin" th:field="*{fFin}"
-           class="form-control mb-4 col-4">
-      <div th:object="${multado}"></div>
-      <div th:field="*{lector}" th:value="${multado}"></div>
+  <form action="#" th:action="@{/lectores/multar/}" th:object="${lector}"  method="POST">
+      <input type="text"  placeholder="Escriba fecha inicio" th:field="*{multa.fInicio}"
+             class="form-control mb-4 col-4">
 
+      <input type="text" placeholder="Escriba fecha final" th:field="*{multa.fFin}"
+             class="form-control mb-4 col-4">
 
-    <button type="submit" class="btn btn-info col-2">Guardar Lector</button>
+      <label>Confirma la multa del usuario</label>
+      <input type="checkbox"  th:field="*{multado}"
+               class="form-control mb-4 col-4">
+
+      <a th:href="@{/lectores}">Volver al listado de Lectores</a>
+
+    <button type="submit" class="btn btn-info col-2">Multar Lector</button>
+
   </form>
-  <form th:object="${multa}"  method="POST">
-    <input type="hidden" th:field="*{id}">
-  </form>
+
   <hr>
-  <a th:href="@{/lectores}">Volver al listado de Lectores</a>
+
 
 </div>
 </body>
