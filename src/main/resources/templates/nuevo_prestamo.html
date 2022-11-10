@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo prestamo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h3>Gestión de prestamos</h3>
+  <hr>
+  <h2>Actualización de un libro</h2>
+
+
+  <form action="#" th:action="@{/prestamos/save}" th:object="${prestamo}" method="POST">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:field="*{fin}" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{inicio}" class="form-control mb-4 col-4">
+    <input th:field="*{lector}" class="form-control mb-4 col-4">
+
+
+    <button type="submit" class="btn btn-info col-2">Guardar Libro</button>
+  </form>
+
+  <hr>
+  <a th:href="@{/libros}">Volver al listado de libros</a>
+</div>
+</body>
+</html>
