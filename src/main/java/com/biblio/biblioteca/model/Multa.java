@@ -63,7 +63,6 @@ public class Multa {
     }
 
     public void setLector(Lector lector) {
-        System.out.println("pasa por aqui");
         this.lector = lector;
         this.lector.setMultado(true);
         this.lector.setMulta(this);

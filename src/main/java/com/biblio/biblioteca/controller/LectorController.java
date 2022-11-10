@@ -1,6 +1,7 @@
 package com.biblio.biblioteca.controller;
 
 import com.biblio.biblioteca.model.Lector;
+import com.biblio.biblioteca.model.Multa;
 import com.biblio.biblioteca.service.LectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -67,5 +68,15 @@ public class LectorController {
         Lector l = new Lector();
         model.addAttribute("lector", l);
         return "nuevo_lector";
+    }
+
+
+    @GetMapping("/lectores/multar/{id}")
+    public String showFormMultar(@PathVariable(value="id") long id, Model model){
+        Lector lector = lectorService.getLectorById(id);
+        Multa m = new Multa();
+        model.addAttribute("multado", lector);
+        model.addAttribute("multa", m);
+        return "multar";
     }
 }

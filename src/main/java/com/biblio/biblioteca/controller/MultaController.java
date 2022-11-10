@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -33,7 +34,7 @@ public class MultaController {
                                 Model model){
         int pageSize=4;
         Page<Multa> page = multaService.findPaginated(pageNo, pageSize, sortField, sortDir) ;
-        List<Multa> listMulta=page.getContent();
+        List<Multa> listMulta= page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
