@@ -83,7 +83,8 @@ public class Lector{
     }
 
     public Lector(){
-
+        this.multado=false;
+        this.multa = new Multa(0L, new Date(), new Date());
     }
 
     public Lector(Long id, String direccion, String nombre, String telefono, Boolean multado) {
