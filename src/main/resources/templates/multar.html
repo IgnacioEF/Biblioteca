@@ -14,20 +14,18 @@
 
   <form action="#" th:action="@{/lectores/multar/{id}(id=${castigado.id})}"  method="POST">
 
-      <input type="datetime-local" th:field="*{penalizacion.fInicio}"
+      <input type="text" th:field="*{penalizacion.fInicio}"
              class="form-control mb-4 col-4">
 
-      <input type="datetime-local" th:field="*{penalizacion.fFin}"
+      <input type="text" th:field="*{penalizacion.fFin}"
              class="form-control mb-4 col-4">
-
-      <input type="hidden" th:field="*{penalizacion.lector}" th:value="castigado.id">
-
 
       <label>Confirma la multa del usuario</label>
       <input type="checkbox"  th:field="*{castigado.multado}"
                class="form-control mb-4 col-4">
 
-      <input type="hidden" th:field="*{castigado.multa}" th:value="penalizacion.id">
+      <!--<input type="hidden" th:field="*{castigado.multa}" th:value="penalizacion.id">
+      <input type="hidden" th:field="*{penalizacion.lector}" th:value="castigado.id">-->
 
       <a th:href="@{/lectores}">Volver al listado de Lectores</a>
 

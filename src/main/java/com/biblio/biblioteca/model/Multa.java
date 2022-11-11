@@ -69,7 +69,5 @@ public class Multa {
 
     public void setLector(Long id) {
         this.lector.setId(id);
-        this.lector.setMultado(true);
-        this.lector.setMulta(this.id);
     }
 }

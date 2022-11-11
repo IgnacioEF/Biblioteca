@@ -31,7 +31,7 @@ public class Lector{
     private Set<Prestamo> prestamo = new HashSet<>();
 
     @JoinColumn
-    @OneToOne(mappedBy="lector", targetEntity=Multa.class,  fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
+    @OneToOne(fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Multa multa;
 
     public Long getId() {
