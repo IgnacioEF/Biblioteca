@@ -70,7 +70,7 @@ public class MultaController {
     @GetMapping("/multas/add")
     public String showNewForm(Model model) {
         Multa multa = new Multa();
-        multa.setLector(new Lector());
+        multa.setLector(0L);
         List<Lector> listLector = lectorService.getAllLector();
         model.addAttribute("multa", multa);
         model.addAttribute("listLector", listLector);

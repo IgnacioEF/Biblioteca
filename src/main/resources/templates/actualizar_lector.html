@@ -18,8 +18,13 @@
     <input type="text" th:field="*{telefono}" class="form-control mb-4 col-4">
     <input type="checkbox"  th:field="*{multado}"
            class="form-control mb-4 col-4">
-    <p>prestamos</p>
-    <p>multa</p>
+
+    <input type="text"  placeholder="Escriba fecha inicio" th:field="*{}"
+           class="form-control mb-4 col-4">
+
+    <input type="text" placeholder="Escriba fecha final" th:field="*{penalizacion.fFin}"
+           class="form-control mb-4 col-4">
+
     <button type="submit" class="btn btn-info col-2">Guardar Lector</button>
   </form>
   <hr>

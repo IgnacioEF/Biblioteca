@@ -9,20 +9,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET,RequestMethod.DELETE,RequestMethod.PUT}, value = "/lectores")
 public class LectorController {
     @Autowired
     private LectorService lectorService;
 
-    @GetMapping("/lectores")
+    @GetMapping("")
     public String viewHomePage(Model model){
 
         return findPaginated(1, "nombre", "asc", model);
     }
 
-    @GetMapping("/lectores/page/{pageNo}")
+    @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value="pageNo") int pageNo,
                                 @RequestParam("sortField") String sortField,
                                 @RequestParam("sortDir") String sortDir,
@@ -44,26 +46,28 @@ public class LectorController {
         return "lectores";
     }
 
-    @PostMapping("/lectores/save")
+    @PostMapping("/save")
     public String saveLector(@ModelAttribute("id") Lector l){
         this.lectorService.saveLector(l);
         return "redirect:/lectores";
     }
 
-    @GetMapping("/lectores/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteLector(@PathVariable(value="id") long id, Model model){
         this.lectorService.deleteLectorById(id);
         return "redirect:/lectores";
     }
 
-    @GetMapping("/lectores/update/{id}")
+    @GetMapping("/update/{id}")
     public String showFormUpdate(@PathVariable(value="id") long id, Model model){
         Lector lector = lectorService.getLectorById(id);
+        Multa m = new Multa();
         model.addAttribute("lector", lector);
+        model.addAttribute("castigo", m);
         return "actualizar_lector";
     }
 
-    @GetMapping("/lectores/add")
+    @GetMapping("/add")
     public String showNewForm(Model model) {
         Lector l = new Lector();
         model.addAttribute("lector", l);
@@ -71,12 +75,14 @@ public class LectorController {
     }
 
 
-    @GetMapping("/lectores/multar/{id}")
+    @GetMapping("/multar/{id}")
     public String showFormMultar(@PathVariable(value="id") long id, Model model){
         Lector lector = lectorService.getLectorById(id);
-        Multa multa = new Multa();
-        model.addAttribute("lector", lector);
-        model.addAttribute("multa", multa);
+        Date d1 = new Date(2022, 11, 11);
+        Date d2 = new Date(2022, 11, 17);
+        Multa multa = new Multa(0L, d1, d2, lector);
+        model.addAttribute("castigado", lector);
+        model.addAttribute("penalizacion", multa);
         return "multar";
     }
 }

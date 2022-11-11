@@ -31,7 +31,7 @@ public class Lector{
     private Set<Prestamo> prestamo = new HashSet<>();
 
     @JoinColumn
-    @OneToOne
+    @OneToOne(mappedBy="lector", targetEntity=Multa.class,  fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Multa multa;
 
     public Long getId() {
@@ -78,13 +78,13 @@ public class Lector{
         return this.multa;
     }
 
-    public void setMulta(Multa multa) {
-        this.multa = multa;
+    public void setMulta(Long id) {
+        this.multa.setLector(id);
     }
 
     public Lector(){
         this.multado=false;
-        this.multa = new Multa(0L, new Date(), new Date());
+        this.multa = new Multa(0L, new Date(), new Date(), this);
     }
 
     public Lector(Long id, String direccion, String nombre, String telefono, Boolean multado) {
@@ -93,7 +93,7 @@ public class Lector{
         this.nombre = nombre;
         this.telefono = telefono;
         this.multado=multado;
-        this.multa = new Multa(0L, new Date(), new Date());
+        this.multa = new Multa(0L, new Date(), new Date(), this);
 
     }
 

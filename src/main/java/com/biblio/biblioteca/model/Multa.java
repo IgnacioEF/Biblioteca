@@ -21,7 +21,7 @@ public class Multa {
     Date fFin;
 
     @JoinColumn
-    @OneToOne(mappedBy="multa", targetEntity=Lector.class)
+    @OneToOne(mappedBy="multa", targetEntity=Lector.class,  fetch= FetchType.EAGER, cascade=CascadeType.MERGE)
     private Lector lector;
 
 
@@ -56,19 +56,20 @@ public class Multa {
         this.fFin = new Date();
     }
 
-    public Multa(Long id, Date fInicio, Date fFin) {
+    public Multa(Long id, Date fInicio, Date fFin, Lector l) {
         this.id = id;
         this.fInicio = fInicio;
         this.fFin = fFin;
+        this.lector = l;
     }
 
     public String getLector() {
         return lector.getNombre();
     }
 
-    public void setLector(Lector lector) {
-        this.lector = lector;
+    public void setLector(Long id) {
+        this.lector.setId(id);
         this.lector.setMultado(true);
-        this.lector.setMulta(this);
+        this.lector.setMulta(this.id);
     }
 }
