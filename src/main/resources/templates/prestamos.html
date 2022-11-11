@@ -42,42 +42,44 @@
     </thead>
     <tbody>
 
-      <tr th:each="prestamo: ${listPrestamo}">
-          <td th:text="${prestamo.id}"></td>
-          <td th:text="${prestamo.inicio}"></td>
-          <td th:text="${prestamo.fin}"></td>
-          <td th:text="${prestamo.copia}"></td>
-          <td th:text="${prestamo.lector}"></td>
-          <td>
-        <a class="btn btn-danger" th:href="@{/prestamos/delete/{id}(id=${prestamo.id})}">Devolver</a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <p th:if="${listPrestamo.size() == 0}">No existen prestamos</p>
+          <tr th:each="prestamo: ${listPrestamo}">
+            <td th:text="${prestamo.id}"></td>
+            <td th:text="${prestamo.inicio}"></td>
+            <td th:text="${prestamo.fin}"></td>
+            <td th:text="${prestamo.copia}"></td>
+            <td th:text="${prestamo.lector}"></td>
+            <td>
+              <a class="btn btn-danger" th:href="@{/prestamos/delete/{id}(id=${prestamo.id})}">Devolver</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <p th:if="${listPrestamo.size() == 0}">No existen prestamos</p>
 
-  <div th:if="${totalPages > 1}">
-    <div class="row col-sm-10">
-      <div class="col-sm-5">Total Filas : [[${totalItems}]]</div>
-      <div class="col-sm-3">
+        <div th:if="${totalPages > 1}">
+          <div class="row col-sm-10">
+            <div class="col-sm-5">Total Filas : [[${totalItems}]]</div>
+            <div class="col-sm-3">
 		                <span th:each="i:${#numbers.sequence(1, totalPages)}">
                             <a th:if="${currentPage !=1}"
-                               th:href="@{'/prestamo/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
+                               th:href="@{'/prestamos/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"
                             >[[${i}]] </a>
 			                <span th:unless="${currentPage !=1}">[[${i}]]</span>
 		                </span>
-      </div>
-      <div class="col-sm-1">
-        <a th:if="${currentPage < totalPages}"
-           th:href="@{'/prestamo/page/' + ${currentPage + 1}
+            </div>
+            <div class="col-sm-1">
+              <a th:if="${currentPage < totalPages}"
+                 th:href="@{'/prestamos/page/' + ${currentPage + 1}
                             + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Próxima</a>
-        <span th:unless="${currentPage < totalPages}">Próxima</span>
-      </div>
-      <div class="col-sm-1">
-        <a th:if="${currentPage < totalPages}"
-           th:href="@{'/prestamo/page/' + ${totalPages}
+              <span th:unless="${currentPage < totalPages}">Próxima</span>
+            </div>
+            <div class="col-sm-1">
+              <a th:if="${currentPage < totalPages}"
+                 th:href="@{'/prestamos/page/' + ${totalPages}
                             + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Última</a>
-        <span th:unless="${currentPage < totalPages}">Última</span>
+              <span th:unless="${currentPage < totalPages}">Última</span>
+            </div>
+          </div>
       </div>
     </div>
   </div>
