@@ -16,31 +16,31 @@
         <a th:href="@{'/prestamos/page/' + ${currentPage}
                             + '?sortField=id&sortDir='
                             + ${reverseSortDir}}">Id préstamo</a>
-      </th>
-      <th>
-        <a th:href="@{'/prestamos/page/' + ${currentPage}
+            </th>
+            <th>
+              <a th:href="@{'/prestamos/page/' + ${currentPage}
                             + '?sortField=inicio&sortDir='
                             + ${reverseSortDir}}">Fecha Inicio</a>
-      </th>
-      <th>
-        <a th:href="@{'/libros/page/' + ${currentPage}
+            </th>
+            <th>
+              <a th:href="@{'/libros/page/' + ${currentPage}
                             + '?sortField=fin&sortDir='
                             + ${reverseSortDir}}">Fecha Finalizacion</a>
-      </th>
-      <th>
-        <a th:href="@{'/libros/page/' + ${currentPage}
+            </th>
+            <th>
+              <a th:href="@{'/libros/page/' + ${currentPage}
                             + '?sortField=copia&sortDir='
                             + ${reverseSortDir}}">Copia</a>
-      </th>
-      <th>
-        <a th:href="@{'/libros/page/' + ${currentPage}
+            </th>
+            <th>
+              <a th:href="@{'/libros/page/' + ${currentPage}
                             + '?sortField=lector&sortDir='
                             + ${reverseSortDir}}">Lector</a>
-      </th>
-      <th>Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
+            </th>
+            <th>Acciones</th>
+          </tr>
+          </thead>
+          <tbody>
 
           <tr th:each="prestamo: ${listPrestamo}">
             <td th:text="${prestamo.id}"></td>
