@@ -1,144 +1,58 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Biblioteca Spring</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-
-<link href="bootstrap_offline/assets/img/favicon.png" rel="icon">
-<link href="bootstrap_offline/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-
-<link href="bootstrap_offline/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-<link href="bootstrap_offline/assets/vendor/aos/aos.css" rel="stylesheet">
-<link href="bootstrap_offline/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap_offline/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="bootstrap_offline/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="bootstrap_offline/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="bootstrap_offline/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-<link href="bootstrap_offline/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-
-<link href="bootstrap_offline/assets/css/style.css" rel="stylesheet">
-
-
+    <meta charset="UTF-8">
+    <title>BIBLIOTECA</title>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css}">
 </head>
-
 <body>
+<a th:class="btn btn-primary btn-sm mb-3" th:href="@{https://localhost:8080/libros}">Vista de libros</a>
+<a th:class="btn btn-primary btn-sm mb-3" th:href="@{https://localhost:8080/autores}">Vista de Autores</a>
+<a th:class="btn btn-primary btn-sm mb-3" th:href="@{https://localhost:8080/lectores}">Vista de Lectores</a>
+<a th:class="btn btn-primary btn-sm mb-3" th:href="@{https://localhost:8080/prestamos}">Vista de Préstamos</a>
+<a th:class="btn btn-primary btn-sm mb-3" th:href="@{https://localhost:8080/multas}">Vista de Multas</a>
+
+    <div th:class="container">
+        <div th:class="d-flex justify-content-center">
+        <div id="demo" class="carousel slide" data-ride="carousel">
 
 
-<header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
-    <div class="container d-flex align-items-center justify-content-between">
-
-        <div class="logo">
-            <h1><a href="index.html">Biblioteca Spring</a></h1>
-
-        </div>
-
-        <nav id="navbar" class="navbar">
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-
-    </div>
-</header>
+            <ul th:class="carousel-indicators">
+                <li th:target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
 
 
-<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
-    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+            <div th:class="carousel-inner">
+                <div th:class="carousel-item active">
+                    <img th:src="@{https://3.bp.blogspot.com/-lJXH5atdMZA/V0zGUWpXAzI/AAAAAAAAgK8/LSUd8OMdDFc68HGB49GOaGNWk6t094ylQCLcB/s1600/Consejos%2Bpara%2Bconvertir%2Ba%2Bun%2Bni%25C3%25B1o%2Ben%2Bun%2Bgran%2Blector.jpg}"
+                         alt="Un lector" href="@{http://localhost:8080/lectores}">
+                    <div th:class="carousel-caption">
+                        <h3>LECTORES</h3>
+                        <p>Acceda a la gestión de lectores</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{https://media.npr.org/assets/img/2019/07/31/peppa-core-landscape-73f127c915a9ef8761ae55b059dc49e5bc35957d.jpg}"
+                         alt="Un lector" th:href="@{http://localhost:8080/lectores}">
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{https://3.bp.blogspot.com/-lJXH5atdMZA/V0zGUWpXAzI/AAAAAAAAgK8/LSUd8OMdDFc68HGB49GOaGNWk6t094ylQCLcB/s1600/Consejos%2Bpara%2Bconvertir%2Ba%2Bun%2Bni%25C3%25B1o%2Ben%2Bun%2Bgran%2Blector.jpg}"
+                         alt="Un lector" th:href="@{http://localhost:8080/lectores}">
+                </div>
+            </div>
 
 
-        <div class="carousel-item active">
-            <div class="carousel-container">
-                <h2 class="animate__animated animate__fadeInDown">Gestion de  <span>libros</span></h2>
-                <p class="animate__animated fanimate__adeInUp">Una sencilla vista donde poder gestionar los libros de la biblioteca</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Acceder</a>
+            <a th:class="carousel-control-prev" th:href="@{#demo}" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a th:class="carousel-control-next" th:href="@{#demo}" data-slide="next">
+                <span th:class="carousel-control-next-icon"></span>
+            </a>
+
             </div>
         </div>
-
-
-        <div class="carousel-item">
-            <div class="carousel-container">
-                <h2 class="animate__animated animate__fadeInDown">Gestion de Autores</h2>
-                <p class="animate__animated animate__fadeInUp">Una sencilla vista donde poder gestionar los autores de la biblioteca</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Acceder</a>
-            </div>
-        </div>
-
-
-        <div class="carousel-item">
-            <div class="carousel-container">
-                <h2 class="animate__animated animate__fadeInDown">Gestion lectores</h2>
-                <p class="animate__animated animate__fadeInUp">Una sencilla vista donde poder gestionar los lectores afiliados a la biblioteca</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-            </div>
-        </div>
-
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-        </a>
-
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-        </a>
-
     </div>
-
-    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-        <defs>
-            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-        </defs>
-        <g class="wave1">
-            <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
-        </g>
-        <g class="wave2">
-            <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
-        </g>
-        <g class="wave3">
-            <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
-        </g>
-    </svg>
-
-</section>
-
-
-
-
-<footer id="footer">
-    <div class="container">
-        <h3>Biblioteca Spring</h3>
-        <p>Antonio Jesús Trujillo Marín</p>
-        <p>Ignacio Espigares Fernández</p>
-        <p>Daniel Miranda Torres</p>
-
-
-
-
-    </div>
-</footer>
-
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<script src="bootstrap_offline/assets/vendor/aos/aos.js"></script>
-<script src="bootstrap_offline/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="bootstrap_offline/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="bootstrap_offline/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="bootstrap_offline/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="bootstrap_offline/assets/vendor/php-email-form/validate.js"></script>
-
-
-<script src="bootstrap_offline/assets/js/main.js"></script>
-
 </body>
-
 </html>
